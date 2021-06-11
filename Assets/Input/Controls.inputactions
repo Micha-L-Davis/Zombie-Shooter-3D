@@ -14,6 +14,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "d9f85439-da61-4a82-9142-2dc8e7fc4017",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "LookX",
                     "type": "Value",
                     "id": "abdd46ae-ed93-4fb9-b957-7c71998c62e3",
@@ -33,14 +41,6 @@
                     "name": "Fire",
                     "type": "Button",
                     "id": "7e36ec13-9955-4149-a93a-f14a28738d2a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "d9f85439-da61-4a82-9142-2dc8e7fc4017",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -266,28 +266,6 @@
                 },
                 {
                     "name": "",
-                    "id": "b089b05f-a42f-486b-b5ce-24b43fd9eda7",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "389eb91b-0fd8-41ac-a6e2-9298400a9dde",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "739322bf-8d6b-4d0e-8cfc-6ccd970b79a6",
                     "path": "<Gamepad>/rightStick/y",
                     "interactions": "",
@@ -316,6 +294,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "DisableLook",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b089b05f-a42f-486b-b5ce-24b43fd9eda7",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "389eb91b-0fd8-41ac-a6e2-9298400a9dde",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

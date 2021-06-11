@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour, Controls.IPlayerActions
+public class Player : MonoBehaviour, Controls.IPlayerActions, IDamageable
 {
     CharacterController _controller;
     [Header("Controller Settings")]
     [SerializeField]
     float _speed = 5.0f;
+    [SerializeField]
+    int _maxHealth = 100;
     [SerializeField]
     float _jumpHeight = 15.0f;
     [SerializeField]
@@ -23,21 +25,25 @@ public class Player : MonoBehaviour, Controls.IPlayerActions
     Transform _camera;
     float _mouseX;
     float _mouseY;
-    [Header("Weapon Settings")]
-    [SerializeField]
-    float _fireCooldown;
-    float _canfire = -1;
+    Shoot _shoot;
+    
+
+    public int Health { get; set; }
 
     void Start()
     {
+        Health = _maxHealth;
+
         _controller = GetComponent<CharacterController>();
         if (_controller == null)
             throw new UnityException("Character Controller is NULL");
         _camera = Camera.main.transform;
         if (_camera == null)
             throw new UnityException("Main Camera is NULL");
+        _shoot = GetComponent<Shoot>();
+        if (_shoot == null)
+            throw new UnityException("Shoot Script Component is NULL");
 
-        //lock and hide cursor
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -79,12 +85,7 @@ public class Player : MonoBehaviour, Controls.IPlayerActions
 
     public void OnFire(InputAction.CallbackContext context)
     {
-        RaycastHit hit;
-        if (Time.time > _canfire && Physics.Raycast(_camera.position, _camera.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
-        {
-            _canfire = Time.time + _fireCooldown;
-            Debug.Log("Hit " + hit.transform.name);
-        }
+        _shoot.Fire();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -119,5 +120,13 @@ public class Player : MonoBehaviour, Controls.IPlayerActions
                 Cursor.lockState = CursorLockMode.Locked;
         }
 
+    }
+
+    public void Damage(int amount)
+    {
+        Health -= amount;
+        Debug.Log("Health =" + Health);
+        if (Health < 1)
+            Destroy(gameObject);
     }
 }
