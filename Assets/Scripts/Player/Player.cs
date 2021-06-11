@@ -12,6 +12,8 @@ public class Player : MonoBehaviour, Controls.IPlayerActions, IDamageable
     [SerializeField]
     int _maxHealth = 100;
     [SerializeField]
+    int _currentHealth;
+    [SerializeField]
     float _jumpHeight = 15.0f;
     [SerializeField]
     float _gravity = 1.0f;
@@ -28,7 +30,7 @@ public class Player : MonoBehaviour, Controls.IPlayerActions, IDamageable
     Shoot _shoot;
     
 
-    public int Health { get; set; }
+    public int Health { get { return _currentHealth; } set { _currentHealth = value; } }
 
     void Start()
     {

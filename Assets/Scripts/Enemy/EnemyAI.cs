@@ -13,6 +13,8 @@ public class EnemyAI : MonoBehaviour, IDamageable
     float _attackSpeed = 1f;
     [SerializeField]
     int _maxHealth = 100;
+    [SerializeField]
+    int _currentHealth;
     float _yVelocity;
     Vector3 _velocity, _direction;
     float _gravity = 1;
@@ -27,7 +29,7 @@ public class EnemyAI : MonoBehaviour, IDamageable
     [SerializeField]
     EnemyState _currentState = EnemyState.Chase;
 
-    public int Health { get; set; }
+    public int Health { get { return _currentHealth; } set { _currentHealth = value; } }
 
     public void Damage(int amount)
     {

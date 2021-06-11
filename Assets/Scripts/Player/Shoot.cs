@@ -8,7 +8,7 @@ public class Shoot : MonoBehaviour
     float _fireCooldown;
     float _canfire = -1;
     [SerializeField]
-    GameObject _bloodSplatFX;
+    PoolManager _poolManager;
     Transform _camera;
     // Start is called before the first frame update
     void Start()
@@ -27,8 +27,11 @@ public class Shoot : MonoBehaviour
             IDamageable target = hit.transform.GetComponent<IDamageable>();
             if (target != null)
             {
-
-                Instantiate(_bloodSplatFX, hit.point, Quaternion.LookRotation(hit.normal), hit.transform);
+                //reuse spatter
+                //Instantiate(_bloodSplatFX, hit.point, Quaternion.LookRotation(hit.normal), hit.transform);
+                GameObject blood = _poolManager.RequestBloodSpatter();
+                blood.transform.position = hit.point;
+                blood.transform.rotation = Quaternion.LookRotation(hit.normal);
                 target.Damage(25);
             }
 

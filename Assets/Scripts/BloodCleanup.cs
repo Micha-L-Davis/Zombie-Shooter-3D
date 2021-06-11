@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class BloodCleanup : MonoBehaviour
 {
-    private void Start()
+    private void OnEnable()
     {
-        Destroy(gameObject, 2f);
+        Invoke("Hide", 2);
+    }
+
+    void Hide()
+    {
+        this.gameObject.SetActive(false);
     }
 }

@@ -50,7 +50,7 @@ MonoBehaviour:
   _speed: 1.5
   _rotationSpeed: 500
   _attackSpeed: 1
-  _maxHealth: 100
+  _maxHealth: 1000
   _currentState: 0
 --- !u!33 &6680224064569929961
 MeshFilter:

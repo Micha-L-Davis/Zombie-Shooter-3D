@@ -218,6 +218,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &526685415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 526685417}
+  - component: {fileID: 526685416}
+  m_Layer: 0
+  m_Name: Object Pool Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &526685416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526685415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41775189b7eb8b648bb654117a36604a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bloodSpatterPrefab: {fileID: 8729043021112652020, guid: 819c6268a8e154147984aa729b6f126b, type: 3}
+  _bloodSpatterPool: []
+  _amountOfBlood: 5
+--- !u!4 &526685417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526685415}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5999999, z: 4.15}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,6 +648,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _maxHealth: 100
+  _currentHealth: 0
   _jumpHeight: 20
   _gravity: 1
   _hLookSpeed: 20
@@ -745,7 +792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fireCooldown: 0.75
-  _bloodSplatFX: {fileID: 8729043021112652020, guid: 819c6268a8e154147984aa729b6f126b, type: 3}
+  _poolManager: {fileID: 526685416}
 --- !u!1 &1525590570
 GameObject:
   m_ObjectHideFlags: 0
