@@ -65,6 +65,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""6a5b55f0-2adc-429b-b0c6-319a5de6c749"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -331,6 +339,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""460285c4-8503-439c-8697-955e368a0390"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -406,6 +425,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_LookY = m_Player.FindAction("LookY", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_DisableLook = m_Player.FindAction("DisableLook", throwIfNotFound: true);
+        m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -461,6 +481,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_LookY;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_DisableLook;
+    private readonly InputAction m_Player_Reload;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -471,6 +492,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @LookY => m_Wrapper.m_Player_LookY;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @DisableLook => m_Wrapper.m_Player_DisableLook;
+        public InputAction @Reload => m_Wrapper.m_Player_Reload;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -498,6 +520,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @DisableLook.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDisableLook;
                 @DisableLook.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDisableLook;
                 @DisableLook.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDisableLook;
+                @Reload.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
+                @Reload.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
+                @Reload.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -520,6 +545,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @DisableLook.started += instance.OnDisableLook;
                 @DisableLook.performed += instance.OnDisableLook;
                 @DisableLook.canceled += instance.OnDisableLook;
+                @Reload.started += instance.OnReload;
+                @Reload.performed += instance.OnReload;
+                @Reload.canceled += instance.OnReload;
             }
         }
     }
@@ -577,5 +605,6 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnLookY(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnDisableLook(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
     }
 }

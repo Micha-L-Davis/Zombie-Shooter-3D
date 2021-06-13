@@ -79,6 +79,14 @@ public class Gun_Fire_Pistol : MonoBehaviour
         }
     }
 
+    void OnReload(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            _anim.SetTrigger("Reload");
+        }
+    }
+
     public void FireGunParticles()
     {
         Debug.Log("Fired gun particles");

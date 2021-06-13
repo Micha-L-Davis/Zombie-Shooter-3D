@@ -131,4 +131,9 @@ public class Player : MonoBehaviour, Controls.IPlayerActions, IDamageable
         if (Health < 1)
             Destroy(gameObject);
     }
+
+    public void OnReload(InputAction.CallbackContext context)
+    {
+        throw new System.NotImplementedException();
+    }
 }
