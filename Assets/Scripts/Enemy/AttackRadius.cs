@@ -17,7 +17,7 @@ public class AttackRadius : MonoBehaviour
             Player player = other.GetComponent<Player>();
             if (player != null)
             {
-                StartCoroutine(_enemy.AttackRoutine(player));
+                //StartCoroutine(_enemy.AttackRoutine(player));
             }
         }
     }

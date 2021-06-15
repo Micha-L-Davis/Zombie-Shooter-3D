@@ -27,7 +27,7 @@ public class Player : MonoBehaviour, Controls.IPlayerActions, IDamageable
     Transform _camera;
     float _mouseX;
     float _mouseY;
-    Shoot _shoot;
+    Gun_Fire_Pistol _gunFirePistol;
     
 
     public int Health { get { return _currentHealth; } set { _currentHealth = value; } }
@@ -42,8 +42,8 @@ public class Player : MonoBehaviour, Controls.IPlayerActions, IDamageable
         _camera = Camera.main.transform;
         if (_camera == null)
             throw new UnityException("Main Camera is NULL");
-        _shoot = GetComponent<Shoot>();
-        if (_shoot == null)
+        _gunFirePistol = GetComponentInChildren<Gun_Fire_Pistol>();
+        if (_gunFirePistol == null)
             throw new UnityException("Shoot Script Component is NULL");
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -87,7 +87,10 @@ public class Player : MonoBehaviour, Controls.IPlayerActions, IDamageable
 
     public void OnFire(InputAction.CallbackContext context)
     {
-        _shoot.Fire();
+        if (context.started)
+            _gunFirePistol.Fire();
+        if (context.performed)
+            _gunFirePistol.ReleaseAuto();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -134,6 +137,6 @@ public class Player : MonoBehaviour, Controls.IPlayerActions, IDamageable
 
     public void OnReload(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
+        _gunFirePistol.ReloadWeapon();
     }
 }
